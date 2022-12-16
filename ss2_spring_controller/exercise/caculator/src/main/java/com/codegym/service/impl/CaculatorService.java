@@ -28,6 +28,8 @@ public class CaculatorService implements ICaculatorService {
                     }
                     result = num1 / num2;
                     break;
+                default:
+                    return "index";
             }
             return String.valueOf(result);
         } catch (NumberFormatException e) {
