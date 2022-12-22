@@ -10,7 +10,7 @@
 
 <a th:href="@{/}">Back to product list</a>
 
-<form th:action="@{/update}" th:method="post" th:object="${blog}">
+<form action="/update" method="post" th:object="${blog}">
     <table>
         <tr>
             <td><input type="hidden" th:field="*{id}"/></td>
@@ -29,15 +29,16 @@
         <tr>
             <td>Category:</td>
             <td>
-                <input type="text" th:field="*{category}"/>
-
+                <select th:field="*{category}">
+                    <option th:each="item : ${categoryList}" th:value="${item.id}" th:text="${item.categoryName}"></option>
+                </select>
             </td>
         </tr>
 
         <tr>
             <td>Date:</td>
             <td>
-                <input type="date" th:field="*{dateCreated}"/>
+                <input type="date" th:field="*{dateCreated}" />
             </td>
         </tr>
 

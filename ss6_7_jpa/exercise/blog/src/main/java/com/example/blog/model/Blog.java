@@ -10,20 +10,12 @@ public class Blog {
     private String title;
     private String writer;
     private String content;
-    @Column(columnDefinition = "date")
     private String dateCreated;
-    private String category;
+
+    @ManyToOne
+    private Category category;
 
     public Blog() {
-    }
-
-    public Blog(int id, String title, String writer, String content, String dateCreated, String category) {
-        this.id = id;
-        this.title = title;
-        this.writer = writer;
-        this.content = content;
-        this.dateCreated = dateCreated;
-        this.category = category;
     }
 
     public int getId() {
@@ -66,11 +58,11 @@ public class Blog {
         this.dateCreated = dateCreated;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }

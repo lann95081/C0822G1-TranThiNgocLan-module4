@@ -10,7 +10,7 @@
 
 <a th:href="@{/}">Back to blog list</a>
 
-<form th:action="@{/save}" th:method="post" th:object="${blog}">
+<form action="/save" method="post" th:object="${blog}">
     <table>
         <tr>
             <td>Title:</td>
@@ -25,7 +25,9 @@
         <tr>
             <td>Category:</td>
             <td>
-               <input type="text" th:field="*{category}"/>
+                <select th:field="*{category}">
+                    <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.categoryName1}"></option>
+                </select>
             </td>
         </tr>
 
