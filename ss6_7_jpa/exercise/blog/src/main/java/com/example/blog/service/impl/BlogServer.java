@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BlogService implements IBlogService {
+public class BlogServer implements IBlogService {
 
     @Autowired
     private IBlogRepository iBlogRepository;
@@ -28,7 +28,7 @@ public class BlogService implements IBlogService {
 
     @Override
     public Blog findById(int id) {
-        return iBlogRepository.findById(id);
+        return iBlogRepository.findById(id).get();
     }
 
     @Override
@@ -48,6 +48,6 @@ public class BlogService implements IBlogService {
 
     @Override
     public Page<Blog> searchByTitle(String title, Pageable pageable) {
-        return iBlogRepository.searchByTitle(title, pageable);
+        return iBlogRepository.searchByTitle(title,pageable);
     }
 }
