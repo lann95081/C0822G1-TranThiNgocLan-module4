@@ -4,11 +4,10 @@ import com.example.case_study.model.customer.Customer;
 import com.example.case_study.service.customer.ICustomerService;
 import com.example.case_study.service.customer.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -23,10 +22,16 @@ public class CustomerController {
     private ICustomerService iCustomerService;
 
     @GetMapping("")
-    public String showList(Model model) {
+    public String showList(Pageable pageable,
+                           @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch,
+                           @RequestParam(value = "emailSearch", defaultValue = "") String emailSearch,
+                           @RequestParam(value = "customerTypeSearch", defaultValue = "") String customerTypeSearch, Model model) {
         List<Customer> customerList = iCustomerService.findAll();
-        model.addAttribute("customerList", customerList);
+        model.addAttribute("customerList", iCustomerService.searchCustomer(nameSearch, emailSearch, customerTypeSearch, pageable));
         model.addAttribute("customerTypeList", iCustomerTypeService.findAll());
+        model.addAttribute("nameSearch", nameSearch);
+        model.addAttribute("emailSearch", emailSearch);
+        model.addAttribute("customerTypeSearch", customerTypeSearch);
         return "customer/list";
     }
 
@@ -39,8 +44,30 @@ public class CustomerController {
 
     @PostMapping("/add")
     public String saveCustomer(Customer customer, RedirectAttributes redirectAttributes) {
-        iCustomerService.save(customer);
+        iCustomerService.save(new Customer());
         redirectAttributes.addFlashAttribute("message", "Thêm mới khách hàng thành công!");
+        return "redirect:/customer";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editCustomer(@PathVariable Integer id, Model model) {
+        Customer customer = iCustomerService.findById(id).get();
+        model.addAttribute("customer", customer);
+        model.addAttribute("customerTypeList", iCustomerTypeService.findAll());
+        return "customer/edit";
+    }
+
+    @PostMapping("/update")
+    public String updateCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
+        iCustomerService.update(customer);
+        redirectAttributes.addFlashAttribute("message", "Chỉnh sửa khách hàng thành công!");
+        return "redirect:/customer";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@PathVariable(value = "idDelete") Integer id, RedirectAttributes redirectAttributes) {
+        iCustomerService.deleteCustomer(id);
+        redirectAttributes.addFlashAttribute("message", "Xoá khách hàng [" + iCustomerService.findById(id).get().getCustomerName() + "] thành công!");
         return "redirect:/customer";
     }
 }
