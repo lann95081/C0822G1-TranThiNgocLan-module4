@@ -44,7 +44,7 @@ public class CustomerController {
 
     @PostMapping("/add")
     public String saveCustomer(Customer customer, RedirectAttributes redirectAttributes) {
-        iCustomerService.save(new Customer());
+        iCustomerService.save(customer);
         redirectAttributes.addFlashAttribute("message", "Thêm mới khách hàng thành công!");
         return "redirect:/customer";
     }

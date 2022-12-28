@@ -9,7 +9,7 @@ import java.util.Set;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int customerId;
+    private Integer customerId;
     private String customerName;
     private String customerBirthday;
     private Integer customerGender;
