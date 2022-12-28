@@ -7,10 +7,15 @@ import com.example.cart_app.service.IProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("/app")
+@RequestMapping(value = "/app")
 @SessionAttributes("cart")
 public class ProductController {
 
@@ -31,5 +36,24 @@ public class ProductController {
         BeanUtils.copyProperties(product, productDto);
         cartDto.addProduct(productDto);
         return "redirect:/cart";
+    }
+
+    @GetMapping("/detail/{id}")
+    public ModelAndView showDetail(@PathVariable long id, HttpServletResponse response) {
+        Cookie cookie = new Cookie("idProduct", String.valueOf(id));
+        cookie.setMaxAge(30);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+        return new ModelAndView("product/detail", "product", iProductService.findById(id).get());
+    }
+
+    @GetMapping
+    public ModelAndView showListPage(Model model,
+                                     @CookieValue(value = "idProduct", defaultValue = "-1") Long id) {
+        if (id != -1) {
+            model.addAttribute("historyProduct", iProductService.findById(id));
+        }
+        return new ModelAndView("/product/list", "productList", iProductService.findAll());
     }
 }

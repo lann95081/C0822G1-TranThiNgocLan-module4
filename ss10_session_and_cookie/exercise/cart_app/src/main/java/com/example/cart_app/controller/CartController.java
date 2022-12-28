@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/cart")
 public class CartController {
     @GetMapping
-    public ModelAndView showCart(@SessionAttribute("cart") CartDto cartDto) {
+    public ModelAndView showCart(@SessionAttribute(name = "cart",required = false) CartDto cartDto) {
         return new ModelAndView("cart/list", "cart", cartDto);
     }
 }
