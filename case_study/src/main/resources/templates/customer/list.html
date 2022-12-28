@@ -81,7 +81,12 @@
             <td th:text="${customer.customerType.customerTypeName}"></td>
 
             <td class="text-center">
-                <button class="btn btn-warning btn-outline-secondary btn-sm">
+                <button th:attr="onclick=|viewCustomer('${customer.customerName}', '${customer.customerBirthday}',
+                '${customer.customerGender}', '${customer.customerIdCard}', '${customer.customerPhone}',
+                '${customer.customerEmail}', '${customer.customerAddress}',
+                '${customer.customerType.customerTypeName}')|"
+                        class="btn btn-warning btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#viewCustomer">
                     <span class="fa-solid fa-user text-light h6 m-auto px-2"></span>
                 </button>
             </td>
@@ -95,14 +100,162 @@
             </td>
 
             <td class="text-center">
-                <button class="btn btn-danger btn-outline-secondary btn-sm">
+                <button th:attr="onclick=|deleteCustomer('${customer.customerId}', '${customer.customerName}')|"
+                        class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#deleteCustomer">
                     <span class="fa-solid fa-person-circle-minus text-light h6 m-auto px-2"></span>
                 </button>
             </td>
         </tr>
     </table>
+
+    <nav aria-label="..." class="justify-content-center d-flex">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" th:href="@{'/customer'(page=${customerList.number - 1}, nameSearch=${nameSearch},
+                mailSearch=${mailSearch}, customerTypeSearch=${customerTypeSearch})}" th:if="${customerList.hasPrevious()}">
+                    &laquo;</a>
+            </li>
+            <li class="page-item disabled" th:unless="${customerList.hasPrevious()}">
+                <a class="page-link">&laquo;</a>
+            </li>
+
+            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number - 1},
+            nameSearch=${nameSearch}, phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"
+                                     th:if="${customerList.hasPrevious()}" th:text="${customerList.number}"></a></li>
+
+            <li class="page-item active">
+                <a class="page-link" th:href="@{'/customer'(page=${customerList.number}, nameSearch=${nameSearch},
+                phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}" th:text="${customerList.number + 1}">
+                    <span class="sr-only">(trang hiện tại)</span></a>
+            </li>
+
+            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number + 1},
+            nameSearch=${nameSearch}, phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"
+                                     th:if="${customerList.hasNext()}" th:text="${customerList.number + 2}"></a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{'/customer'(page=${customerList.number + 1}, nameSearch=${nameSearch},
+                phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"
+                   th:if="${customerList.hasNext()}">&raquo;</a>
+            </li>
+            <li class="page-item disabled" th:unless="${customerList.hasNext()}">
+                <a class="page-link">&raquo;</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
+<div class="modal fade" id="deleteCustomer" tabindex="-1" aria-labelledby="exampleModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modalCSS">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel1">Bạn có chắc chắn muốn xóa?</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form th:action="@{/customer/delete}">
+                <div class="modal-body">
+                    <span class="h6">Khách hàng:</span><strong id="nameDelete" class="text-danger ps-2"></strong>
+                    <input type="hidden" name="idDelete" id="idDelete" readonly/>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-danger" value="delete">Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="viewCustomer" tabindex="-1" aria-labelledby="exampleModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modalCSS">
+            <div class="modal-header">
+                <h4 class="modal-title text-center" id="exampleModalLabel2">THÔNG TIN KHÁCH HÀNG</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td class="h6 pe-3">Tên khách hàng:</td>
+                        <td id="name" class="text-primary h6"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="h6 pe-3">Ngày sinh:</td>
+                        <td id="birthday" class="text-primary"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="h6 pe-3">Giới tính:</td>
+                        <td id="gender" class="text-primary"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="h6 pe-3">Số CMND/CCCD:</td>
+                        <td id="idCard" class="text-primary"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="h6 pe-3">Số điện thoại:</td>
+                        <td id="phone" class="text-primary"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="h6 pe-3">Email:</td>
+                        <td id="email" class="text-primary"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="h6 pe-3">Địa chỉ:</td>
+                        <td id="address" class="text-primary"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="h6 pe-3">Loại khách:</td>
+                        <td id="type" class="text-primary"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function deleteCustomer(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerText = name;
+        debugger
+    }
+
+    function viewCustomer(name, birthday, gender, idCard, phone, email, address, type) {
+        document.getElementById("name").innerText = name;
+        document.getElementById("birthday").innerText = birthday;
+        if (gender == 0) {
+            document.getElementById("gender").innerText = "Nữ";
+        } else if (gender == 1) {
+            document.getElementById("gender").innerText = "Nam";
+        } else {
+            document.getElementById("gender").innerText = "LGBT";
+        }
+        document.getElementById("idCard").innerText = idCard;
+        document.getElementById("phone").innerText = phone;
+        document.getElementById("email").innerText = email;
+        document.getElementById("address").innerText = address;
+        document.getElementById("type").innerText = type;
+        debugger
+    }
+</script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
