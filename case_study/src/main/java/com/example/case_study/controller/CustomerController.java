@@ -23,11 +23,12 @@ public class CustomerController {
     private ICustomerService iCustomerService;
 
     @GetMapping("")
-    public String showList(Pageable pageable,
+    public String showList( Pageable pageable,
                            @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch,
                            @RequestParam(value = "emailSearch", defaultValue = "") String emailSearch,
                            @RequestParam(value = "customerTypeSearch", defaultValue = "") String customerTypeSearch, Model model) {
         List<Customer> customerList = iCustomerService.findAll();
+
         model.addAttribute("customerList", iCustomerService.searchCustomer(nameSearch, emailSearch, customerTypeSearch, pageable));
         model.addAttribute("customerTypeList", iCustomerTypeService.findAll());
         model.addAttribute("nameSearch", nameSearch);
