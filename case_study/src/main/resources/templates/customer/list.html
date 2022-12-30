@@ -109,42 +109,42 @@
         </tr>
     </table>
 
-    <nav aria-label="..." class="justify-content-center d-flex">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" th:href="@{'/customer'(page=${customerList.number - 1}, nameSearch=${nameSearch},
-                mailSearch=${mailSearch}, customerTypeSearch=${customerTypeSearch})}" th:if="${customerList.hasPrevious()}">
-                    &laquo;</a>
-            </li>
-            <li class="page-item disabled" th:unless="${customerList.hasPrevious()}">
-                <a class="page-link">&laquo;</a>
-            </li>
+<!--    <nav aria-label="..." class="justify-content-center d-flex">-->
+<!--        <ul class="pagination">-->
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" th:href="@{'/customer'(page=${customerList.number - 1}, nameSearch=${nameSearch},-->
+<!--                mailSearch=${mailSearch}, customerTypeSearch=${customerTypeSearch})}" th:if="${customerList.hasPrevious()}">-->
+<!--                    &laquo;</a>-->
+<!--            </li>-->
+<!--            <li class="page-item disabled" th:unless="${customerList.hasPrevious()}">-->
+<!--                <a class="page-link">&laquo;</a>-->
+<!--            </li>-->
 
-            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number - 1},
-            nameSearch=${nameSearch}, phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"
-                                     th:if="${customerList.hasPrevious()}" th:text="${customerList.number}"></a></li>
+<!--            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number - 1},-->
+<!--            nameSearch=${nameSearch}, phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"-->
+<!--                                     th:if="${customerList.hasPrevious()}" th:text="${customerList.number}"></a></li>-->
 
-            <li class="page-item active">
-                <a class="page-link" th:href="@{'/customer'(page=${customerList.number}, nameSearch=${nameSearch},
-                phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}" th:text="${customerList.number + 1}">
-                    <span class="sr-only">(trang hiện tại)</span></a>
-            </li>
+<!--            <li class="page-item active">-->
+<!--                <a class="page-link" th:href="@{'/customer'(page=${customerList.number}, nameSearch=${nameSearch},-->
+<!--                phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}" th:text="${customerList.number + 1}">-->
+<!--                    <span class="sr-only">(trang hiện tại)</span></a>-->
+<!--            </li>-->
 
-            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number + 1},
-            nameSearch=${nameSearch}, phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"
-                                     th:if="${customerList.hasNext()}" th:text="${customerList.number + 2}"></a>
-            </li>
+<!--            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number + 1},-->
+<!--            nameSearch=${nameSearch}, phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"-->
+<!--                                     th:if="${customerList.hasNext()}" th:text="${customerList.number + 2}"></a>-->
+<!--            </li>-->
 
-            <li class="page-item">
-                <a class="page-link" th:href="@{'/customer'(page=${customerList.number + 1}, nameSearch=${nameSearch},
-                phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"
-                   th:if="${customerList.hasNext()}">&raquo;</a>
-            </li>
-            <li class="page-item disabled" th:unless="${customerList.hasNext()}">
-                <a class="page-link">&raquo;</a>
-            </li>
-        </ul>
-    </nav>
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" th:href="@{'/customer'(page=${customerList.number + 1}, nameSearch=${nameSearch},-->
+<!--                phoneSearch=${phoneSearch}, addressSearch=${addressSearch})}"-->
+<!--                   th:if="${customerList.hasNext()}">&raquo;</a>-->
+<!--            </li>-->
+<!--            <li class="page-item disabled" th:unless="${customerList.hasNext()}">-->
+<!--                <a class="page-link">&raquo;</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </nav>-->
 </div>
 
 <div class="modal fade" id="deleteCustomer" tabindex="-1" aria-labelledby="exampleModalLabel1"

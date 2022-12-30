@@ -67,7 +67,7 @@ public class CustomerController {
     }
 
     @GetMapping("/delete")
-    public String delete(@PathVariable(value = "idDelete") Integer id, RedirectAttributes redirectAttributes) {
+    public String deleteCustomer(@PathVariable(value = "idDelete") Integer id, RedirectAttributes redirectAttributes) {
         iCustomerService.deleteCustomer(id);
         redirectAttributes.addFlashAttribute("message", "Xoá khách hàng " +
                 "[" + iCustomerService.findById(id).get().getCustomerName() + "] thành công!");

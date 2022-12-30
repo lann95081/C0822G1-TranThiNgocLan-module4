@@ -12,9 +12,12 @@ public class Employee {
     private int employeeId;
     private String employeeName;
     private String employeeBirthday;
+    @Column(unique = true)
     private String employeeIdCard;
     private String employeeSalary;
+    @Column(unique = true)
     private String employeePhone;
+    @Column(unique = true)
     private String employeeEmail;
     private String employeeAddress;
     private boolean deleteStatus;

@@ -13,8 +13,11 @@ public class Customer {
     private String customerName;
     private String customerBirthday;
     private Integer customerGender;
+    @Column(unique = true)
     private String customerIdCard;
+    @Column(unique = true)
     private String customerPhone;
+    @Column(unique = true)
     private String customerEmail;
     private String customerAddress;
     private boolean deleteStatus;
