@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
     <meta charset="UTF-8">
 
     <title>Chỉnh sửa dịch vụ</title>
@@ -114,10 +115,10 @@
 
             <div class="mt-3 form-group" th:if="${facilityDto.facilityType.facilityTypeId != 3}">
                 <label for="numberOfFloors" class="h6">Số tầng:</label>
-                <p style="color: red" th:if="${#fields.hasErrors('numberOfFloor')}" th:errors="*{numberOfFloor}"></p>
+                <p style="color: red" th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></p>
                 <div class="input-group">
                     <input type="number" id="numberOfFloors" class="form-control" placeholder="Nhập số tầng.."
-                           th:field="*{numberOfFloor}" pattern="^[1-9]\d*| *$"
+                           th:field="*{numberOfFloors}" pattern="^[1-9]\d*| *$"
                            title="Số tầng phải là số nguyên dương."/>
                     <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
                 </div>

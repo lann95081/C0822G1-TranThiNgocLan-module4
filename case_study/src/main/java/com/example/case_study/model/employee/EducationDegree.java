@@ -6,8 +6,8 @@ import java.util.Set;
 @Entity
 public class EducationDegree {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int educationDegreeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer educationDegreeId;
     private String educationDegreeName;
 
     @OneToMany(mappedBy = "educationDegree")
@@ -16,11 +16,11 @@ public class EducationDegree {
     public EducationDegree() {
     }
 
-    public int getEducationDegreeId() {
+    public Integer getEducationDegreeId() {
         return educationDegreeId;
     }
 
-    public void setEducationDegreeId(int educationDegreeId) {
+    public void setEducationDegreeId(Integer educationDegreeId) {
         this.educationDegreeId = educationDegreeId;
     }
 
@@ -36,7 +36,7 @@ public class EducationDegree {
         return employees;
     }
 
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
+    public void setEmployees(Set<Employee> employee) {
+        this.employees = employee;
     }
 }

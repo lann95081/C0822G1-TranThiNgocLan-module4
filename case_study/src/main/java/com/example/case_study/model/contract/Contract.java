@@ -10,12 +10,15 @@ import java.util.Set;
 @Entity
 public class Contract {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int contractId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer contractId;
     private String startDate;
     private String endDate;
     private String deposit;
     private boolean deleteStatus;
+
+    @OneToMany(mappedBy = "contract")
+    private Set<ContractDetail> contractDetail;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
@@ -29,25 +32,14 @@ public class Contract {
     @JoinColumn(name = "facility_id", referencedColumnName = "facilityId")
     private Facility facility;
 
-    @OneToMany(mappedBy = "contract")
-    private Set<ContractDetail> contractDetails;
-
     public Contract() {
     }
 
-    public Set<ContractDetail> getContractDetails() {
-        return contractDetails;
-    }
-
-    public void setContractDetails(Set<ContractDetail> contractDetails) {
-        this.contractDetails = contractDetails;
-    }
-
-    public int getContractId() {
+    public Integer getContractId() {
         return contractId;
     }
 
-    public void setContractId(int contractId) {
+    public void setContractId(Integer contractId) {
         this.contractId = contractId;
     }
 
@@ -81,6 +73,14 @@ public class Contract {
 
     public void setDeleteStatus(boolean deleteStatus) {
         this.deleteStatus = deleteStatus;
+    }
+
+    public Set<ContractDetail> getContractDetail() {
+        return contractDetail;
+    }
+
+    public void setContractDetail(Set<ContractDetail> contractDetail) {
+        this.contractDetail = contractDetail;
     }
 
     public Employee getEmployee() {

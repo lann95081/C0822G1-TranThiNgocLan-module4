@@ -95,6 +95,7 @@ public class FacilityController {
         }
 
         Facility facility = new Facility();
+        BeanUtils.copyProperties(facilityDto, facility);
         iFacilityService.update(facility);
         redirectAttributes.addFlashAttribute("message", "Chỉnh sửa dịch vụ thành công!");
 

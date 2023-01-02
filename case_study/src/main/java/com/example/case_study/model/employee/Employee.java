@@ -8,8 +8,8 @@ import java.util.Set;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int employeeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer employeeId;
     private String employeeName;
     private String employeeBirthday;
     @Column(unique = true)
@@ -32,27 +32,19 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "division_id", referencedColumnName = "divisionId")
-    private Division division;
+    private Divisions divisions;
 
     @OneToMany(mappedBy = "employee")
-    private Set<Contract> contracts;
+    private Set<Contract> contract;
 
     public Employee() {
     }
 
-    public Set<Contract> getContracts() {
-        return contracts;
-    }
-
-    public void setContracts(Set<Contract> contracts) {
-        this.contracts = contracts;
-    }
-
-    public int getEmployeeId() {
+    public Integer getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -112,14 +104,6 @@ public class Employee {
         this.employeeAddress = employeeAddress;
     }
 
-    public boolean isDeleteStatus() {
-        return deleteStatus;
-    }
-
-    public void setDeleteStatus(boolean deleteStatus) {
-        this.deleteStatus = deleteStatus;
-    }
-
     public Position getPosition() {
         return position;
     }
@@ -136,11 +120,27 @@ public class Employee {
         this.educationDegree = educationDegree;
     }
 
-    public Division getDivision() {
-        return division;
+    public Divisions getDivisions() {
+        return divisions;
     }
 
-    public void setDivision(Division division) {
-        this.division = division;
+    public void setDivisions(Divisions divisions) {
+        this.divisions = divisions;
+    }
+
+    public Set<Contract> getContract() {
+        return contract;
+    }
+
+    public void setContract(Set<Contract> contract) {
+        this.contract = contract;
+    }
+
+    public boolean isDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(boolean deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 }

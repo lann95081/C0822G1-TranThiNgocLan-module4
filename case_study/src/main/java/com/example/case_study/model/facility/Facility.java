@@ -8,8 +8,8 @@ import java.util.Set;
 @Entity
 public class Facility {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int facilityId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer facilityId;
     private String facilityName;
     private String facilityArea;
     private String rentCost;
@@ -17,37 +17,29 @@ public class Facility {
     private String standardRoom;
     private String descriptionOtherConvenience;
     private String poolArea;
-    private String numberOfFloor;
+    private String numberOfFloors;
     private String facilityFree;
     private boolean deleteStatus;
 
     @ManyToOne
-    @JoinColumn(name = "facility_type_id", referencedColumnName = "facilityTypeId")
-    private FacilityType facilityType;
-
-    @ManyToOne
-    @JoinColumn(name = "rent_type_id", referencedColumnName = "rentTypeId")
+    @JoinColumn(name= "rent_type_id",referencedColumnName = "rentTypeId")
     private RentType rentType;
 
+    @ManyToOne
+    @JoinColumn(name= "facility_type_id",referencedColumnName = "facilityTypeId")
+    private FacilityType facilityType;
+
     @OneToMany(mappedBy = "facility")
-    private Set<Contract> contracts;
+    private Set<Contract> contract;
 
     public Facility() {
     }
 
-    public Set<Contract> getContracts() {
-        return contracts;
-    }
-
-    public void setContracts(Set<Contract> contracts) {
-        this.contracts = contracts;
-    }
-
-    public int getFacilityId() {
+    public Integer getFacilityId() {
         return facilityId;
     }
 
-    public void setFacilityId(int facilityId) {
+    public void setFacilityId(Integer facilityId) {
         this.facilityId = facilityId;
     }
 
@@ -107,12 +99,12 @@ public class Facility {
         this.poolArea = poolArea;
     }
 
-    public String getNumberOfFloor() {
-        return numberOfFloor;
+    public String getNumberOfFloors() {
+        return numberOfFloors;
     }
 
-    public void setNumberOfFloor(String numberOfFloor) {
-        this.numberOfFloor = numberOfFloor;
+    public void setNumberOfFloors(String numberOfFloors) {
+        this.numberOfFloors = numberOfFloors;
     }
 
     public String getFacilityFree() {
@@ -131,19 +123,19 @@ public class Facility {
         this.deleteStatus = deleteStatus;
     }
 
-    public FacilityType getFacilityType() {
-        return facilityType;
-    }
-
-    public void setFacilityType(FacilityType facilityType) {
-        this.facilityType = facilityType;
-    }
-
     public RentType getRentType() {
         return rentType;
     }
 
     public void setRentType(RentType rentType) {
         this.rentType = rentType;
+    }
+
+    public FacilityType getFacilityType() {
+        return facilityType;
+    }
+
+    public void setFacilityType(FacilityType facilityType) {
+        this.facilityType = facilityType;
     }
 }

@@ -12,10 +12,6 @@
 <div class="p-3">
     <h2 class="text-center fw-bold text-light my-3">DANH SÁCH DỊCH VỤ</h2>
 
-<!--    <p class="text-center mt-3">-->
-<!--        <a th:href="@{/}"><i class="fa-solid fa-house-chimney h5 mx-1"></i> Quay lại trang chủ</a>-->
-<!--    </p>-->
-
     <div th:if="${message}">
         <div class="justify-content-center d-flex">
             <div class="alert alert-success alert-dismissible fade show w-50 text-center">
@@ -75,7 +71,7 @@
             <td class="text-center">
                 <button th:attr="onclick=|viewFacility('${facility.facilityName}', '${facility.facilityArea}',
                 '${facility.rentCost}', '${facility.maxPeople}', '${facility.standardRoom}',
-                '${facility.descriptionOtherConvenience}', '${facility.poolArea}', '${facility.numberOfFloor}',
+                '${facility.descriptionOtherConvenience}', '${facility.poolArea}', '${facility.numberOfFloors}',
                 '${facility.facilityFree}', '${facility.rentType.rentTypeName}',
                 '${facility.facilityType.facilityTypeName}')|"
                         class="btn btn-warning btn-outline-secondary btn-sm" data-bs-toggle="modal"
@@ -242,7 +238,7 @@
         debugger
     }
 
-    function viewFacility(name, area, cost, maxPeople, standardRoom, description, poolArea, numberOfFloor,
+    function viewFacility(name, area, cost, maxPeople, standardRoom, description, poolArea, numberOfFloors,
                           facilityFree, rentType, facilityType) {
         document.getElementById("name").innerText = name;
         document.getElementById("area").innerHTML = area + " (m<sup>2</sup>)";
@@ -268,9 +264,9 @@
         }
 
         if (numberOfFloors === "") {
-            document.getElementById("numberOfFloor").innerText = "-";
+            document.getElementById("numberOfFloors").innerText = "-";
         } else {
-            document.getElementById("numberOfFloor").innerText = numberOfFloors;
+            document.getElementById("numberOfFloors").innerText = numberOfFloors;
         }
 
         if (facilityFree === "") {

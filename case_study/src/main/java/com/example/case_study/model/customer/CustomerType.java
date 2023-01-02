@@ -6,8 +6,8 @@ import java.util.Set;
 @Entity
 public class CustomerType {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int customerTypeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer customerTypeId;
     private String customerTypeName;
 
     @OneToMany(mappedBy = "customerType")
@@ -16,11 +16,11 @@ public class CustomerType {
     public CustomerType() {
     }
 
-    public int getCustomerTypeId() {
+    public Integer getCustomerTypeId() {
         return customerTypeId;
     }
 
-    public void setCustomerTypeId(int customerTypeId) {
+    public void setCustomerTypeId(Integer customerTypeId) {
         this.customerTypeId = customerTypeId;
     }
 
@@ -36,7 +36,7 @@ public class CustomerType {
         return customers;
     }
 
-    public void setCustomers(Set<Customer> customers) {
-        this.customers = customers;
+    public void setCustomers(Set<Customer> customer) {
+        this.customers = customer;
     }
 }

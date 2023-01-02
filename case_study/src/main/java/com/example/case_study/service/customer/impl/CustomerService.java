@@ -37,13 +37,12 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void deleteCustomer(Integer id) {
-        iCustomerRepository.deleteById(id);
+    public void deleteLogical(Integer id) {
+        iCustomerRepository.deleteLogical(id);
     }
 
     @Override
-    public Page<Customer> searchCustomer(String nameSearch, String emailSearch, String customerTypeSearch, Pageable pageable) {
-        return iCustomerRepository.searchCustomer(nameSearch, emailSearch, customerTypeSearch, pageable);
-
+    public Page<Customer> searchCustomer(String nameSearch, String emailSearch, Pageable pageable) {
+        return iCustomerRepository.searchCustomer(nameSearch, emailSearch, pageable);
     }
 }

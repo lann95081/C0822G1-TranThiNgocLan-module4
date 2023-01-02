@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="~{/home::head}">
     <meta charset="UTF-8">
 
     <title>Chỉnh sửa khách hàng</title>
@@ -19,11 +20,12 @@
 
     <div class="d-flex justify-content-center">
         <form class="w-50 border border-2 border-success p-3 rounded formCSS" th:action="@{/customer/update}"
-              th:object="${customer}" method="post" novalidate="novalidate">
+              th:object="${customerDto}" method="POST" novalidate="novalidate">
             <input type="hidden" th:field="*{customerId}" readonly/>
 
             <div class="form-group">
                 <label for="name" class="h6">Tên khách hàng:</label>
+                <p style="color: red" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></p>
                 <div class="input-group">
                     <input type="text" id="name" class="form-control" placeholder="Nhập tên khách hàng.."
                            th:field="*{customerName}"/>
@@ -33,20 +35,24 @@
 
             <div class="mt-3 form-group">
                 <label for="dateOfBirth" class="h6">Ngày sinh:</label>
+                <p style="color: red" th:if="${#fields.hasErrors('customerBirthday')}"
+                   th:errors="*{customerBirthday}"></p>
                 <input type="date" id="dateOfBirth" class="form-control" th:field="*{customerBirthday}"
                        th:min="${minAge}" th:max="${maxAge}"/>
             </div>
 
             <div class="mt-3 form-group">
                 <label class="h6">Giới tính:</label>
+                <p style="color: red" th:if="${#fields.hasErrors('customerGender')}"
+                   th:errors="*{customerGender}"></p>
                 <div class="d-flex">
                     <label class="d-block me-4">
-                        <input type="radio" th:field="*{customerGender}" th:value="0"/> Nữ
+                        <input type="radio" th:field="*{customerGender}" th:value="0"/> Nam
                         <i class="fa-solid fa-mars"></i>
                     </label>
 
                     <label class="d-block me-4">
-                        <input type="radio" th:field="*{customerGender}" th:value="1"/> Nam
+                        <input type="radio" th:field="*{customerGender}" th:value="1"/> Nữ
                         <i class="fa-solid fa-venus"></i>
                     </label>
 
@@ -59,6 +65,9 @@
 
             <div class="mt-3 form-group">
                 <label for="idCard" class="h6">Số CMND/CCCD:</label>
+                <p style="color: red" th:if="${#fields.hasErrors('customerIdCard')}"
+                   th:errors="*{customerIdCard}"></p>
+                <p style="color: red" th:if="${duplicateIdCard}" th:text="${duplicateIdCard}"></p>
                 <div class="input-group">
                     <input type="text" id="idCard" class="form-control" placeholder="Nhập số CMND/CCCD.."
                            th:field="*{customerIdCard}"/>
@@ -68,6 +77,8 @@
 
             <div class="mt-3 form-group">
                 <label for="phone" class="h6">Số điện thoại:</label>
+                <p style="color: red" th:if="${#fields.hasErrors('customerPhone')}"
+                   th:errors="*{customerPhone}"></p>
                 <div class="input-group">
                     <input type="text" id="phone" class="form-control" placeholder="Nhập SĐT.."
                            th:field="*{customerPhone}"/>
@@ -77,6 +88,8 @@
 
             <div class="mt-3 form-group">
                 <label for="email" class="h6">Email:</label>
+                <p style="color: red" th:if="${#fields.hasErrors('customerEmail')}"
+                   th:errors="*{customerEmail}"></p>
                 <div class="input-group">
                     <input type="text" id="email" class="form-control" placeholder="Nhập email.."
                            th:field="*{customerEmail}"/>
@@ -86,6 +99,8 @@
 
             <div class="mt-3 form-group">
                 <label for="address" class="h6">Địa chỉ:</label>
+                <p style="color: red" th:if="${#fields.hasErrors('customerAddress')}"
+                   th:errors="*{customerAddress}"></p>
                 <div class="input-group">
                     <input type="text" id="address" class="form-control" placeholder="Nhập địa chỉ.."
                            th:field="*{customerAddress}"/>

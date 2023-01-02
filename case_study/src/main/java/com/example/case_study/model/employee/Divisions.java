@@ -4,23 +4,23 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Division {
+public class Divisions {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int divisionId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer divisionId;
     private String divisionName;
 
-    @OneToMany(mappedBy = "division")
+    @OneToMany(mappedBy = "divisions")
     private Set<Employee> employees;
 
-    public Division() {
+    public Divisions() {
     }
 
-    public int getDivisionId() {
+    public Integer getDivisionId() {
         return divisionId;
     }
 
-    public void setDivisionId(int divisionId) {
+    public void setDivisionId(Integer divisionId) {
         this.divisionId = divisionId;
     }
 
@@ -36,7 +36,7 @@ public class Division {
         return employees;
     }
 
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
+    public void setEmployees(Set<Employee> employee) {
+        this.employees = employee;
     }
 }
