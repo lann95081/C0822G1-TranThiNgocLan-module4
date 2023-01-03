@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head th:replace="~{/home::head}">
+<head>
     <meta charset="UTF-8">
 
     <title>Chỉnh sửa khách hàng</title>
@@ -47,12 +47,12 @@
                    th:errors="*{customerGender}"></p>
                 <div class="d-flex">
                     <label class="d-block me-4">
-                        <input type="radio" th:field="*{customerGender}" th:value="0"/> Nam
+                        <input type="radio" th:field="*{customerGender}" th:value="0"/> Nữ
                         <i class="fa-solid fa-mars"></i>
                     </label>
 
                     <label class="d-block me-4">
-                        <input type="radio" th:field="*{customerGender}" th:value="1"/> Nữ
+                        <input type="radio" th:field="*{customerGender}" th:value="1"/> Nam
                         <i class="fa-solid fa-venus"></i>
                     </label>
 

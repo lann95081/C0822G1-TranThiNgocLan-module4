@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head th:replace="~{/home::head}">
+<head>
     <meta charset="UTF-8">
 
     <title>Thêm mới khách hàng</title>
@@ -35,8 +35,7 @@
                 <label for="dateOfBirth" class="h6">Ngày sinh:</label>
                 <p style="color: red" th:if="${#fields.hasErrors('customerBirthday')}"
                    th:errors="*{customerBirthday}"></p>
-                <input type="date" id="dateOfBirth" class="form-control" th:field="*{customerBirthday}"
-                       th:min="${minAge}" th:max="${maxAge}"/>
+                <input type="date" id="dateOfBirth" class="form-control" th:field="*{customerBirthday}"/>
             </div>
 
             <div class="mt-3 form-group">
@@ -45,12 +44,12 @@
                    th:errors="*{customerGender}"></p>
                 <div class="d-flex">
                     <label class="d-block me-4">
-                        <input type="radio" th:field="*{customerGender}" th:value="0"/> Nam
+                        <input type="radio" th:field="*{customerGender}" th:value="0"/> Nữ
                         <i class="fa-solid fa-mars"></i>
                     </label>
 
                     <label class="d-block me-4">
-                        <input type="radio" th:field="*{customerGender}" th:value="1"/> Nữ
+                        <input type="radio" th:field="*{customerGender}" th:value="1"/> Nam
                         <i class="fa-solid fa-venus"></i>
                     </label>
 

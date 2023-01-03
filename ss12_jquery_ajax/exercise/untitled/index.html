@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Danh sách dịch vụ</title>
@@ -13,25 +13,18 @@
 <div class="p-3">
     <h2 class="text-center fw-bold text-light my-3">DANH SÁCH DỊCH VỤ</h2>
 
-    <div th:if="${message}">
-        <div class="justify-content-center d-flex">
-            <div class="alert alert-success alert-dismissible fade show w-50 text-center">
-                <strong th:text="${message}"></strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        </div>
-    </div>
+
 
     <nav class="navbar navbar-expand-lg py-0 my-0">
         <div class="container-fluid">
-            <a th:href="@{/facility/create}">
+            <a href="/facility/create">
                 <button class="btn btn-primary btn-outline-secondary btn-sm">
                     <span class="fa-solid fa-house-medical text-light h5 my-auto me-1"></span>
                     <span class="text-light"> Thêm mới dịch vụ</span>
                 </button>
             </a>
 
-            <form class="d-flex my-2" role="search" th:action="@{/facility}">
+            <form class="d-flex my-2" role="search" action="/facility">
                 <input class="form-control me-2" type="text" placeholder="Nhập tên dịch vụ.." aria-label="Search"
                        name="nameSearch">
                 <button class="btn btn-light btn-outline-primary" type="submit" name="action" value="search">
@@ -54,33 +47,34 @@
             <th class="text-center">Xóa</th>
         </tr>
 
-        <tr th:each="facility, status : ${facilityList}">
-            <td class="text-center" th:text="${status.count + facilityList.number * 5}"></td>
+        <tr>
+            <td class="text-center">1</td>
 
-            <td th:text="${facility.facilityName}"></td>
+            <td>Villa Beach Front</td>
 
-            <td th:text="${facility.facilityArea}"></td>
+            <td>25000</td>
 
-            <td th:text="${'₫ ' + facility.rentCost}"></td>
+            <td>₫ 1000000</td>
 
-            <td th:text="${facility.maxPeople}"></td>
+            <td>10</td>
 
-            <td th:text="${facility.rentType.rentTypeName}"></td>
+            <td>month
+            </td>
 
-            <td th:text="${facility.facilityType.facilityTypeName}"></td>
+            <td>Villa
+            </td>
 
             <td class="text-center">
-                <button type="button" th:attr="onclick=|viewFacility('${facility.facilityName}'
-                    ,'${facility.facilityArea}','${facility.rentCost}', '${facility.maxPeople}', '${facility.standardRoom}','${facility.descriptionOtherConvenience}', '${facility.poolArea}', '${facility.numberOfFloors}'
-                    ,'${facility.facilityFree}','${facility.rentType.rentTypeName}')|"
-                        class="btn btn-warning btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#viewFacility">
+                <button type="button" class="btn btn-warning btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#viewFacility" onclick="viewFacility(&#39;Villa Beach Front&#39;,&#39;25000&#39;,&#39;1000000&#39;, &#39;10&#39;, &#39;vip&#39;,&#39;Có hồ bơi&#39;, &#39;500&#39;, &#39;4&#39;,&#39;null&#39;,&#39;month
+&#39;,&#39;Villa
+&#39;)">
                     <span class="fa-solid fa-circle-question text-light h6 m-auto px-2"></span>
                 </button>
             </td>
 
             <td class="text-center">
-                <a th:href="@{/facility/edit/__${facility.facilityId}__}">
+                <a href="/facility/edit/1">
                     <button class="btn btn-success btn-outline-secondary btn-sm">
                         <span class="fa-solid fa-house-circle-exclamation text-light h6 m-auto px-2"></span>
                     </button>
@@ -88,9 +82,168 @@
             </td>
 
             <td class="text-center">
-                <button th:attr="onclick=|deleteFacility('${facility.facilityId}', '${facility.facilityName}')|"
-                        class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#deleteFacility">
+                <button class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#deleteFacility" onclick="deleteFacility(&#39;1&#39;, &#39;Villa Beach Front&#39;)">
+                    <span class="fa-solid fa-house-circle-xmark text-light h6 m-auto px-2"></span>
+                </button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="text-center">2</td>
+
+            <td>House Princess 01</td>
+
+            <td>14000</td>
+
+            <td>₫ 5000000</td>
+
+            <td>7</td>
+
+            <td>month
+            </td>
+
+            <td>House
+            </td>
+
+            <td class="text-center">
+                <button type="button" class="btn btn-warning btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#viewFacility" onclick="viewFacility(&#39;House Princess 01&#39;,&#39;14000&#39;,&#39;5000000&#39;, &#39;7&#39;, &#39;vip&#39;,&#39;Có thêm bếp nướng&#39;, &#39;null&#39;, &#39;3&#39;,&#39;null&#39;,&#39;month
+&#39;,&#39;House
+&#39;)">
+                    <span class="fa-solid fa-circle-question text-light h6 m-auto px-2"></span>
+                </button>
+            </td>
+
+            <td class="text-center">
+                <a href="/facility/edit/2">
+                    <button class="btn btn-success btn-outline-secondary btn-sm">
+                        <span class="fa-solid fa-house-circle-exclamation text-light h6 m-auto px-2"></span>
+                    </button>
+                </a>
+            </td>
+
+            <td class="text-center">
+                <button class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#deleteFacility" onclick="deleteFacility(&#39;2&#39;, &#39;House Princess 01&#39;)">
+                    <span class="fa-solid fa-house-circle-xmark text-light h6 m-auto px-2"></span>
+                </button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="text-center">3</td>
+
+            <td>Room Twin 01</td>
+
+            <td>5000</td>
+
+            <td>₫ 1000000</td>
+
+            <td>2</td>
+
+            <td>hour</td>
+
+            <td>Room</td>
+
+            <td class="text-center">
+                <button type="button" class="btn btn-warning btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#viewFacility" onclick="viewFacility(&#39;Room Twin 01&#39;,&#39;5000&#39;,&#39;1000000&#39;, &#39;2&#39;, &#39;normal&#39;,&#39;Có tivi&#39;, &#39;null&#39;, &#39;null&#39;,&#39;1 Xe máy, 1 Xe đạp&#39;,&#39;hour&#39;,&#39;Room&#39;)">
+                    <span class="fa-solid fa-circle-question text-light h6 m-auto px-2"></span>
+                </button>
+            </td>
+
+            <td class="text-center">
+                <a href="/facility/edit/3">
+                    <button class="btn btn-success btn-outline-secondary btn-sm">
+                        <span class="fa-solid fa-house-circle-exclamation text-light h6 m-auto px-2"></span>
+                    </button>
+                </a>
+            </td>
+
+            <td class="text-center">
+                <button class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#deleteFacility" onclick="deleteFacility(&#39;3&#39;, &#39;Room Twin 01&#39;)">
+                    <span class="fa-solid fa-house-circle-xmark text-light h6 m-auto px-2"></span>
+                </button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="text-center">4</td>
+
+            <td>Villa No Beach Front</td>
+
+            <td>22000</td>
+
+            <td>₫ 9000000</td>
+
+            <td>8</td>
+
+            <td>day
+            </td>
+
+            <td>Villa
+            </td>
+
+            <td class="text-center">
+                <button type="button" class="btn btn-warning btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#viewFacility" onclick="viewFacility(&#39;Villa No Beach Front&#39;,&#39;22000&#39;,&#39;9000000&#39;, &#39;8&#39;, &#39;normal&#39;,&#39;Có hồ bơi&#39;, &#39;300&#39;, &#39;3&#39;,&#39;null&#39;,&#39;day
+&#39;,&#39;Villa
+&#39;)">
+                    <span class="fa-solid fa-circle-question text-light h6 m-auto px-2"></span>
+                </button>
+            </td>
+
+            <td class="text-center">
+                <a href="/facility/edit/4">
+                    <button class="btn btn-success btn-outline-secondary btn-sm">
+                        <span class="fa-solid fa-house-circle-exclamation text-light h6 m-auto px-2"></span>
+                    </button>
+                </a>
+            </td>
+
+            <td class="text-center">
+                <button class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#deleteFacility" onclick="deleteFacility(&#39;4&#39;, &#39;Villa No Beach Front&#39;)">
+                    <span class="fa-solid fa-house-circle-xmark text-light h6 m-auto px-2"></span>
+                </button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="text-center">5</td>
+
+            <td>Room Twin 02</td>
+
+            <td>3000</td>
+
+            <td>₫ 900000</td>
+
+            <td>2</td>
+
+            <td>hour</td>
+
+            <td>Room</td>
+
+            <td class="text-center">
+                <button type="button" class="btn btn-warning btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#viewFacility" onclick="viewFacility(&#39;Room Twin 02&#39;,&#39;3000&#39;,&#39;900000&#39;, &#39;2&#39;, &#39;normal&#39;,&#39;Có tivi&#39;, &#39;null&#39;, &#39;null&#39;,&#39;1 Xe máy&#39;,&#39;hour&#39;,&#39;Room&#39;)">
+                    <span class="fa-solid fa-circle-question text-light h6 m-auto px-2"></span>
+                </button>
+            </td>
+
+            <td class="text-center">
+                <a href="/facility/edit/6">
+                    <button class="btn btn-success btn-outline-secondary btn-sm">
+                        <span class="fa-solid fa-house-circle-exclamation text-light h6 m-auto px-2"></span>
+                    </button>
+                </a>
+            </td>
+
+            <td class="text-center">
+                <button class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#deleteFacility" onclick="deleteFacility(&#39;6&#39;, &#39;Room Twin 02&#39;)">
                     <span class="fa-solid fa-house-circle-xmark text-light h6 m-auto px-2"></span>
                 </button>
             </td>
@@ -100,31 +253,26 @@
     <nav aria-label="..." class="justify-content-center d-flex">
         <ul class="pagination">
             <li class="page-item">
-                <a class="page-link" th:href="@{'/facility'(page=${facilityList.number - 1}, nameSearch=${nameSearch})}"
-                   th:if="${facilityList.hasPrevious()}">&laquo;</a>
+
             </li>
-            <li class="page-item disabled" th:unless="${facilityList.hasPrevious()}">
+            <li class="page-item disabled">
                 <a class="page-link">&laquo;</a>
             </li>
 
-            <li class="page-item"><a class="page-link" th:href="@{'/facility'(page=${facilityList.number - 1},
-            nameSearch=${nameSearch})}" th:if="${facilityList.hasPrevious()}" th:text="${facilityList.number}"></a>
+            <li class="page-item">
             </li>
 
             <li class="page-item active">
-                <a class="page-link" th:href="@{'/facility'(page=${facilityList.number}, nameSearch=${nameSearch})}"
-                   th:text="${facilityList.number + 1}"><span class="sr-only">(trang hiện tại)</span></a>
-            </li>
-
-            <li class="page-item"><a class="page-link" th:href="@{'/facility'(page=${facilityList.number + 1},
-            nameSearch=${nameSearch})}" th:if="${facilityList.hasNext()}" th:text="${facilityList.number + 2}"></a>
+                <a class="page-link" href="/facility?page=0&amp;nameSearch=">1</a>
             </li>
 
             <li class="page-item">
-                <a class="page-link" th:href="@{'/facility'(page=${facilityList.number + 1}, nameSearch=${nameSearch})}"
-                   th:if="${facilityList.hasNext()}">&raquo;</a>
             </li>
-            <li class="page-item disabled" th:unless="${facilityList.hasNext()}">
+
+            <li class="page-item">
+
+            </li>
+            <li class="page-item disabled">
                 <a class="page-link">&raquo;</a>
             </li>
         </ul>
@@ -140,7 +288,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form th:action="@{/facility/delete}">
+            <form action="/facility/delete">
                 <div class="modal-body">
                     <span class="h6">Dịch vụ:</span><strong id="nameDelete" class="text-danger ps-2"></strong>
                     <input type="hidden" name="idDelete" id="idDelete" readonly/>

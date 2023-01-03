@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{/home::head}">
+<head>
     <meta charset="UTF-8">
     <title>Danh sách khách hàng</title>
 
@@ -65,8 +65,8 @@
 
             <td th:text="${customer.customerBirthday}"></td>
 
-            <td th:if="${customer.customerGender==0}" th:text="Nam"></td>
-            <td th:if="${customer.customerGender==1}" th:text="Nữ"></td>
+            <td th:if="${customer.customerGender==0}" th:text="Nữ"></td>
+            <td th:if="${customer.customerGender==1}" th:text="Nam"></td>
             <td th:if="${customer.customerGender==2}" th:text="LGBT"></td>
 
             <td th:text="${customer.customerPhone}"></td>
@@ -237,9 +237,9 @@
         document.getElementById("name").innerText = name;
         document.getElementById("birthday").innerText = birthday;
         if (gender == 0) {
-            document.getElementById("gender").innerText = "Nam";
-        } else if (gender == 1) {
             document.getElementById("gender").innerText = "Nữ";
+        } else if (gender == 1) {
+            document.getElementById("gender").innerText = "Nam";
         } else {
             document.getElementById("gender").innerText = "LGBT";
         }
