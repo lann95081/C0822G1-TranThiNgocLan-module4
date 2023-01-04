@@ -46,7 +46,7 @@
         </tr>
 
         <tr th:each="contract, status : ${contractList}">
-            <td class="text-center" th:text="${status.count}"></td>
+            <td class="text-center" th:text="${status.count + contractList.number * 5}"></td>
             <td th:text="${contract.facilityName}"></td>
             <td th:text="${contract.employeeName}"></td>
             <td th:text="${contract.customerName}"></td>
@@ -61,17 +61,17 @@
                     <span class="fa-solid fa-plus text-light h6 m-auto"></span>
                 </button>
 
-                <!--                <a th:href="@{/contract/__${contract.contractId}__}">-->
-                <!--                    <button class="btn btn-primary btn-outline-secondary btn-sm ms-3 px-3">-->
-                <!--                        <span class="text-light m-auto">Danh sách dịch vụ đi kèm</span>-->
-                <!--                    </button>-->
-                <!--                </a>-->
+                <a th:href="@{/contract/__${contract.contractId}__}">
+                    <button class="btn btn-primary btn-outline-secondary btn-sm ms-3 px-3">
+                        <span class="text-light m-auto">Danh sách dịch vụ đi kèm</span>
+                    </button>
+                </a>
 
-                <button class="btn btn-primary btn-outline-secondary btn-sm ms-3 px-3"
-                        th:attr="onclick=|showAttachDetail('${contract.contractId}')|" data-bs-toggle="modal"
-                        data-bs-target="#showAttachDetail">
-                    <span class="text-light m-auto">Danh sách dịch vụ đi kèm</span>
-                </button>
+                <!--                <button class="btn btn-primary btn-outline-secondary btn-sm ms-3 px-3"-->
+                <!--                        th:attr="onclick=|showAttachDetail('${contract.contractId}')|" data-bs-toggle="modal"-->
+                <!--                        data-bs-target="#showAttachDetail">-->
+                <!--                    <span class="text-light m-auto">Danh sách dịch vụ đi kèm</span>-->
+                <!--                </button>-->
             </td>
         </tr>
     </table>
@@ -135,17 +135,17 @@
                             </div>
                         </div>
 
-                        <div class="mt-3 form-group">
-                            <label class="h6" for="employee">Tên nhân viên:</label>
-                            <div class="input-group">
-                                <select id="employee" class="form-control" th:field="*{employee.employeeId}">
-                                    <option th:each="item : ${employeeList}" th:value="${item.employeeId}"
-                                            th:text="${item.employeeName}" th:if="${item.divisions.divisionId != 3}">
-                                    </option>
-                                </select>
-                                <span class="input-group-text"><i class="fa-solid fa-person-circle-question"></i></span>
-                            </div>
-                        </div>
+<!--                        <div class="mt-3 form-group">-->
+<!--                            <label class="h6" for="employee">Tên nhân viên:</label>-->
+<!--                            <div class="input-group">-->
+<!--                                <select id="employee" class="form-control" th:field="*{employee.employeeId}">-->
+<!--                                    <option th:each="item : ${employeeList}" th:value="${item.employeeId}"-->
+<!--                                            th:text="${item.employeeName}" th:if="${item.divisions.divisionId != 3}">-->
+<!--                                    </option>-->
+<!--                                </select>-->
+<!--                                <span class="input-group-text"><i class="fa-solid fa-person-circle-question"></i></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                         <div class="form-group">
                             <label class="h6" for="customer">Tên khách hàng:</label>
