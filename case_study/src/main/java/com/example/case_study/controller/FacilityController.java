@@ -30,8 +30,16 @@ public class FacilityController {
 
     @GetMapping("")
     public String showList(@PageableDefault(value = 5) Pageable pageable,
-                           @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch, Model model) {
-        model.addAttribute("facilityList", iFacilityService.searchFacility(nameSearch, pageable));
+                           @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch,
+                           @RequestParam(value = "facilityType", defaultValue = "0") Integer facilityType,
+                           Model model) {
+
+        if (facilityType == 0) {
+            model.addAttribute("facilityList", iFacilityService.searchFacility(nameSearch, pageable));
+        } else {
+            model.addAttribute("facilityList", iFacilityService.searchFacilityType(nameSearch, facilityType, pageable));
+        }
+
         model.addAttribute("facilityTypeList", iFacilityTypeService.findAll());
         model.addAttribute("rentTypeList", iRentTypeService.findAll());
         model.addAttribute("nameSearch", nameSearch);

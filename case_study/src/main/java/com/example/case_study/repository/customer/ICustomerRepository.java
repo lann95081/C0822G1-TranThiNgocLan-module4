@@ -19,6 +19,12 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
     Page<Customer> searchCustomer(@Param("nameSearch") String nameSearch, @Param("emailSearch") String emailSearch,
                                    Pageable pageable);
 
+    @Query(value = "select * from customer where customer_name like %:nameSearch% and " +
+            "customer_email like %:emailSearch% and customer_type_id = :customerType and delete_status = false",
+            nativeQuery = true)
+    Page<Customer> searchCustomerType(@Param("nameSearch") String nameSearch, @Param("emailSearch") String emailSearch,
+                                  @Param("customerType") Integer customerType,Pageable pageable);
+
     @Query(value = "select * from customer where delete_status = false", nativeQuery = true)
     List<Customer> findAll();
 

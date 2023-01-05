@@ -23,7 +23,13 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void save(Facility facility) {
-        iFacilityRepository.save(facility);
+        for (Facility fac : iFacilityRepository.findAll()) {
+            if (fac.getFacilityName().equals(facility.getFacilityName())) {
+                iFacilityRepository.findAll();
+            } else {
+                iFacilityRepository.save(facility);
+            }
+        }
     }
 
     @Override
@@ -44,5 +50,10 @@ public class FacilityService implements IFacilityService {
     @Override
     public Page<Facility> searchFacility(String nameSearch, Pageable pageable) {
         return iFacilityRepository.searchFacility(nameSearch, pageable);
+    }
+
+    @Override
+    public Page<Facility> searchFacilityType(String nameSearch, Integer facilityType, Pageable pageable) {
+        return iFacilityRepository.searchFacilityType(nameSearch, facilityType, pageable);
     }
 }

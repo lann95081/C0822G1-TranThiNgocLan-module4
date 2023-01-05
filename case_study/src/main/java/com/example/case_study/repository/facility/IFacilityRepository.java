@@ -17,6 +17,13 @@ public interface IFacilityRepository extends JpaRepository<Facility, Integer> {
             nativeQuery = true)
     Page<Facility> searchFacility(@Param("nameSearch") String nameSearch, Pageable pageable);
 
+    @Query(value = "select * from facility where facility_name like %:nameSearch% and " +
+            "facility_type_id = :facilityType and delete_status = false",
+            nativeQuery = true)
+    Page<Facility> searchFacilityType(@Param("nameSearch") String nameSearch,
+                                      @Param("facilityType") Integer facilityType,
+                                      Pageable pageable);
+
     @Query(value = "select * from facility where delete_status = false", nativeQuery = true)
     List<Facility> findAll();
 

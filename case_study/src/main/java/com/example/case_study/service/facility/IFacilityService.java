@@ -19,4 +19,6 @@ public interface IFacilityService {
     void deleteLogical(Integer id);
 
     Page<Facility> searchFacility(String nameSearch, Pageable pageable);
+
+    Page<Facility> searchFacilityType(String nameSearch, Integer facilityType, Pageable pageable);
 }

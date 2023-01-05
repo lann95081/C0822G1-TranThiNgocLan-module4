@@ -15,6 +15,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
@@ -28,13 +30,20 @@ public class CustomerController {
     public String showList(@PageableDefault(value = 5) Pageable pageable,
                            @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch,
                            @RequestParam(value = "emailSearch", defaultValue = "") String emailSearch,
+                           @RequestParam(value = "customerType", defaultValue = "0") Integer customerType,
                            Model model) {
 
-        model.addAttribute("customerList", iCustomerService.searchCustomer(nameSearch, emailSearch
-                , pageable));
+        if (customerType == 0) {
+            model.addAttribute("customerList", iCustomerService.searchCustomer(nameSearch, emailSearch
+                    , pageable));
+        } else {
+            model.addAttribute("customerList", iCustomerService.searchCustomerType(nameSearch,
+                    emailSearch, customerType, pageable));
+        }
         model.addAttribute("customerTypeList", iCustomerTypeService.findAll());
         model.addAttribute("nameSearch", nameSearch);
         model.addAttribute("addressSearch", emailSearch);
+        model.addAttribute("customerType", customerType);
 
         return "customer/list";
     }
@@ -50,6 +59,8 @@ public class CustomerController {
     @PostMapping("/add")
     public String saveCus(@ModelAttribute @Validated CustomerDto customerDto, BindingResult bindingResult,
                           RedirectAttributes redirectAttributes, Model model) {
+
+        Map<String, String> messError = iCustomerService.messError(customerDto);
         new CustomerDto().validate(customerDto, bindingResult);
 
         if (bindingResult.hasFieldErrors()) {
@@ -58,10 +69,16 @@ public class CustomerController {
             return "customer/create";
         }
 
-        Customer customer = new Customer();
-        BeanUtils.copyProperties(customerDto, customer);
-        iCustomerService.save(customer);
-        redirectAttributes.addFlashAttribute("message", "Thêm mới khách hàng thành công!");
+        if (messError.isEmpty()) {
+            Customer customer = new Customer();
+            BeanUtils.copyProperties(customerDto, customer);
+            iCustomerService.save(customer);
+            redirectAttributes.addFlashAttribute("message", "Thêm mới khách hàng thành công!");
+        } else {
+            for (Map.Entry<String, String> error : messError.entrySet()) {
+                bindingResult.rejectValue(error.getKey(), error.getValue());
+            }
+        }
 
         return "redirect:/customer";
     }

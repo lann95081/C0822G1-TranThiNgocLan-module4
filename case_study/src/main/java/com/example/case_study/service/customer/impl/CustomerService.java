@@ -1,5 +1,6 @@
 package com.example.case_study.service.customer.impl;
 
+import com.example.case_study.dto.CustomerDto;
 import com.example.case_study.model.customer.Customer;
 import com.example.case_study.repository.customer.ICustomerRepository;
 import com.example.case_study.service.customer.ICustomerService;
@@ -8,7 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -44,5 +47,27 @@ public class CustomerService implements ICustomerService {
     @Override
     public Page<Customer> searchCustomer(String nameSearch, String emailSearch, Pageable pageable) {
         return iCustomerRepository.searchCustomer(nameSearch, emailSearch, pageable);
+    }
+
+    @Override
+    public Page<Customer> searchCustomerType(String nameSearch, String emailSearch, Integer customerType, Pageable pageable) {
+        return iCustomerRepository.searchCustomerType(nameSearch, emailSearch, customerType, pageable);
+    }
+
+    @Override
+    public Map<String, String> messError(CustomerDto customerDto) {
+        Map<String, String> messError=new HashMap<>();
+        for (Customer customer:iCustomerRepository.findAll()) {
+            if (customer.getCustomerIdCard().equals(customerDto.getCustomerIdCard())){
+                messError.put("Id Card","Id Card đã tồn tại!!");
+            }
+            if (customer.getCustomerEmail().equals(customerDto.getCustomerEmail())){
+                messError.put("Email","Email đã tồn tại!!");
+            }
+            if (customer.getCustomerPhone().equals(customerDto.getCustomerPhone())){
+                messError.put("Số điện thoại","Số điện thoại đã tồn tại!!");
+            }
+        }
+        return messError;
     }
 }

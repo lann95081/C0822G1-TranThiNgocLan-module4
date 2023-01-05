@@ -6,6 +6,7 @@ import com.example.case_study.service.contract.IAttachFacilityService;
 import com.example.case_study.service.contract.IContractDetailService;
 import com.example.case_study.service.contract.IContractService;
 import com.example.case_study.service.customer.ICustomerService;
+import com.example.case_study.service.employee.IEmployeeService;
 import com.example.case_study.service.facility.IFacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -14,9 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Controller
 @RequestMapping("/contract")
@@ -33,8 +31,8 @@ public class ContractController {
     @Autowired
     private IFacilityService iFacilityService;
 
-//    @Autowired
-//    private IEmployeeService iEmployeeService;
+    @Autowired
+    private IEmployeeService iEmployeeService;
 
     @Autowired
     private ICustomerService iCustomerService;
@@ -46,7 +44,7 @@ public class ContractController {
         model.addAttribute("attachFacilityList", iAttachFacilityService.findAll());
         model.addAttribute("contractDetailList", iContractDetailService.findAll());
         model.addAttribute("facilityList", iFacilityService.findAll());
-//        model.addAttribute("employeeList", iEmployeeService.findAll());
+        model.addAttribute("employeeList", iEmployeeService.findAll());
         model.addAttribute("customerList", iCustomerService.findAll());
         model.addAttribute("contract", new Contract());
         model.addAttribute("contractDetail", new ContractDetail());

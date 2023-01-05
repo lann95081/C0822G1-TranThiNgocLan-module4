@@ -13,6 +13,10 @@
 <div class="p-3">
     <h2 class="text-center fw-bold text-light my-3">DANH SÁCH KHÁCH HÀNG</h2>
 
+    <p class="text-center">
+        <a th:href="@{/}"><i class="fa-solid fa-backward"></i> Quay lại trang chủ</a>
+    </p>
+
     <div th:if="${message}">
         <div class="justify-content-center d-flex">
             <div class="alert alert-success alert-dismissible fade show w-50 text-center">
@@ -37,6 +41,11 @@
 
                 <input class="form-control me-2" type="text" placeholder="Nhập email.." aria-label="Search"
                        name="emailSearch">
+
+                <select class="form-control me-2" name="customerType">
+                    <option value="">All Type</option>
+                    <option th:each="type : ${customerTypeList}" th:value="${type.customerTypeId}" th:text="${type.customerTypeName}"></option>
+                </select>
 
                 <button class="btn btn-light btn-outline-primary" type="submit" name="action" value="search">
                     <i class="fa-solid fa-magnifying-glass"></i></button>
