@@ -1,4 +1,6 @@
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
@@ -32,7 +34,29 @@
           </p>
         </div>
         <div class="col-lg-3">
-          <p style="color: #1e2125"><i class="fa-solid fa-user"></i> Trần Thị Ngọc Lan</p>
+          <!--          <p style="color: #1e2125"><i class="fa-solid fa-user"></i> Trần Thị Ngọc Lan</p>-->
+          <div class="container-fluid bg-gray-500 d-flex header" style="height: 100px">
+            <div class="container-fluid text-end my-4 me-4">
+              <div sec:authorize="isAuthenticated()">
+            <span class="mt-3" style="font-size: 15px">
+                    <strong sec:authentication="principal.username"></strong>
+            </span>
+
+                <a th:href="@{/logout}">
+                  <button class="btn btn-danger btn-outline-secondary text-light">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
+                  </button>
+                </a>
+              </div>
+
+              <a th:href="@{/login}" sec:authorize="!isAuthenticated()">
+<!--                <span sec:authorize="isAnonymous()" th:text="${#}"></span>-->
+                <button class="btn btn-success btn-outline-secondary text-light">
+                  <i class="fa-solid fa-right-to-bracket"></i> Đăng nhập
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -50,7 +74,7 @@
             </button>
           </div>
           <div style="margin-left: 30px">
-            <button type="button" class="btn btn-close-white">
+            <button type="button" class="btn btn-close-white" sec:authorize="hasRole('ADMIN')">
               <a href="/employee">EMPLOYEE</a>
             </button>
           </div>
