@@ -10,7 +10,6 @@ public class User {
     private Integer id;
     private String username;
     private String password;
-    private String yourName;
     private boolean isEnabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -46,14 +45,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getYourName() {
-        return yourName;
-    }
-
-    public void setYourName(String yourName) {
-        this.yourName = yourName;
     }
 
     public boolean isEnabled() {
