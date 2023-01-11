@@ -89,7 +89,7 @@
             </td>
         </tr>
     </table>
-
+<!--------------------------------------------------------------------------------------------------------------------->
     <nav aria-label="..." class="justify-content-center d-flex">
         <ul class="pagination">
             <li class="page-item">
@@ -201,14 +201,14 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-success" value="delete">Lưu</button>
+                        <button type="submit" class="btn btn-success">Lưu</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
+<!--------------------------------------------------------------------------------------------------------------------->
 <div class="modal fade" id="addContractdetail" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -251,7 +251,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-success" value="delete">Lưu</button>
+                        <button type="submit" class="btn btn-success">Lưu</button>
                     </div>
                 </div>
             </form>
@@ -322,9 +322,6 @@
                         tr.push("<td class='text-primary text-center'>" + data[i].quantityDto + "</td>");
                         tr.push("</tr>");
                     }
-                    $("#showSlow").append(tr.join(""));
-                    $("#showSlow").hide();
-                    $("#showSlow").fadeIn(4000);
                 }
             }
         })

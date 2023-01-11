@@ -62,10 +62,9 @@ public class CustomerController {
 
         Map<String, String> messError = iCustomerService.messError(customerDto);
         new CustomerDto().validate(customerDto, bindingResult);
-
-        if (bindingResult.hasFieldErrors()) {
+        model.addAttribute("customerDtoc",customerDto);
+        if (bindingResult.hasErrors()) {
             model.addAttribute("customerTypeList", iCustomerTypeService.findAll());
-
             return "customer/create";
         }
 

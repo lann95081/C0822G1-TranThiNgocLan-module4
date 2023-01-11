@@ -16,5 +16,4 @@ public interface IContractDetailRepository extends JpaRepository<ContractDetail,
             "on contract_detail.attach_facility_id = attach_facility.attach_facility_id " +
             "where contract_detail.contract_id = :idFind group by attach_facility.attach_facility_id;", nativeQuery = true)
     List<IContractDetailDto> showAll(@Param("idFind") Integer id);
-
 }
