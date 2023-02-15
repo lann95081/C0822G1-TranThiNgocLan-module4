@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="28988a2e-8b55-41d8-bf1e-f5e0305d0543" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/controller/TinTucController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/model/DanhMuc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/model/TinTuc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/repository/IDanhMucRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/repository/ITinTucRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/service/IDanhMucService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/service/ITinTucService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/service/impl/DanhMucService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/java/com/example/thi_cuoi_module/service/impl/TinTucService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/resources/templates/danh_sach.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thi_cuoi_module/src/main/resources/templates/them_moi.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss13_spring_security/exercise/giai_thuat/out/production/giai_thuat/GiaiThuat.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss13_spring_security/exercise/giai_thuat/out/production/giai_thuat/GiaiThuat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss13_spring_security/exercise/giai_thuat/src/GiaiThuat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss13_spring_security/exercise/giai_thuat/src/GiaiThuat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss1_spring_overview/exercise/currency_conversion/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss1_spring_overview/exercise/currency_conversion/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss2_spring_controller/exercise/sandwich_condiments/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss2_spring_controller/exercise/sandwich_condiments/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss2_spring_controller/exercise/sandwich_condiments/src/main/java/com/codegym/controller/SandwichCondimentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss2_spring_controller/exercise/sandwich_condiments/src/main/java/com/codegym/controller/SandwichCondimentsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss2_spring_controller/exercise/sandwich_condiments/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss2_spring_controller/exercise/sandwich_condiments/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/controller/BlogController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LRMsn08yvNz1LTbvWXNO4mt7uZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="28988a2e-8b55-41d8-bf1e-f5e0305d0543" name="Changes" comment="" />
+      <created>1675829650652</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675829650652</updated>
+      <workItem from="1675829651726" duration="28000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

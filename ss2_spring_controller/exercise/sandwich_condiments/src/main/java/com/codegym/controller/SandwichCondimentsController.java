@@ -17,7 +17,7 @@ public class SandwichCondimentsController {
     public ModelAndView result(@RequestParam(value = "condiment", defaultValue = "") String[] arr) {
         ModelAndView modelAndView = new ModelAndView("index");
         if (arr.length == 0) {
-            modelAndView.addObject("codiment", "No choice yet!");
+            modelAndView.addObject("condiment", "No choice yet!");
         } else {
             modelAndView.addObject("condiment", arr);
         }

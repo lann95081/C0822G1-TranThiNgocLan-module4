@@ -22,8 +22,9 @@ public class BlogController {
     private ICategoryService iCategoryService;
 
     @GetMapping("")
-    public String showList(@PageableDefault Pageable pageable, @RequestParam(value = "search", defaultValue = "")
+    public String showList(@PageableDefault(value = 5) Pageable pageable, @RequestParam(value = "search", defaultValue = "")
                                    String search, Model model) {
+
         model.addAttribute("blogList", iBlogService.searchByTitle(search, pageable));
         model.addAttribute("categoryList", iCategoryService.findAll());
         model.addAttribute("search", search);
